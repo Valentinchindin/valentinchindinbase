@@ -1,0 +1,65 @@
+using System;
+
+namespace pr2_0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Equaltion e = new Equaltion(2, 5, 3);
+            e.Calculation();
+            Console.ReadKey();
+        }
+    }
+ 
+    class Equaltion 
+    {
+        double a;
+        double b;
+        double c;
+ 
+        public Equaltion(double _a, double _b, double _c) 
+        {
+            this.a = _a;
+            this.b = _b;
+            this.c = _c;
+        }
+ 
+        public double A 
+        {
+            get { return a; }
+            set { a = value; }
+        }
+        public double B
+        {
+            get { return b; }
+            set { b = value; }
+        }
+        public double C
+        {
+            get { return c; }
+            set { c = value; }
+        }
+ 
+        public void Calculation() 
+        {
+            double D = Math.Pow(b, 2) - 4 * a * c;
+            if (D > 0)
+            {
+                Console.WriteLine("Уравнение имеет два корня");
+                double x1 = (-1 * b + Math.Sqrt(D)) / (2 * a);
+                double x2 = (-1 * b - Math.Sqrt(D)) / (2 * a);
+                Console.WriteLine("x1 = {0}; x2 = {1}", x1, x2);
+            }
+            else if (D == 0)
+            {
+                Console.WriteLine("Уравнение имеет один корень");
+                double x = (-1 * b) / (2 * a);
+                Console.WriteLine("x = {0}", x);
+            }
+            else
+                Console.WriteLine("Уравнение не имеет вещественных корней");
+        }
+    }
+
+        }
