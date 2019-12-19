@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace chindin_2_lab
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = 0;
+            int M = 0;
+            int[,] Matrix;
+            Random rnd = new Random();
+            {
+                Console.WriteLine("введите размерность матрицы");
+                N = int.Parse(Console.ReadLine());
+                M = int.Parse(Console.ReadLine());
+            }
+            Matrix = new int[N, M];
+            bool[] Nullcheck = new bool[N];
+            bool[] Poslcheck = new bool[M];
+            int Check = 4;
+            int stroka = 1;
+            int stolbec = 1;
+            for (int i = 0; i < N; ++i)
+            {
+                Console.WriteLine();
+                for (int j = 0; j < M; ++j)
+                {
+                    Matrix[i, j] = rnd.Next(0, 3);
+                    Console.Write("{0}\t", Matrix[i, j]);
+                    if (Matrix[i, j] == 0)
+                    {
+                        Nullcheck[i] = true;
+                    }
+                }
+
+            }
+            for (int i = 0; i < M; ++i)
+            {
+                for (int j = 0; j < N; ++j)
+                {
+                    if(Check == 4)
+                    {
+                        Check = Matrix[j, i];
+                        continue;
+                    }
+                    if (Matrix[j, i] == Check)
+                    {
+                        Poslcheck[i] = true;
+                    }
+                    else
+                    {
+                        Check = 4;
+                    }
+                    
+                }
+                Check = 4;
+            }
+            Console.WriteLine();
+            foreach (bool element in Nullcheck)
+            {
+                Console.WriteLine("строка {1} {0}", element, stroka);
+                stroka++;
+            }
+            foreach(bool element in Poslcheck)
+            {
+                Console.WriteLine("столбец {0} {1}", stolbec, element);
+                stolbec++;
+            }
+            Console.Read();
+           
+        }
+       
+
+    }
+
+}
